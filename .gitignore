@@ -4,3 +4,8 @@ Packages
 UserSettings
 .vsconfig
 CrazyBird.sln
+*.sln
+*.csproj
+*.userprefs
+*.unityproj
+*.DS_Store
