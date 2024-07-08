@@ -4,6 +4,7 @@ Packages
 UserSettings
 .vsconfig
 CrazyBird.sln
+Temp
 *.sln
 *.csproj
 *.userprefs

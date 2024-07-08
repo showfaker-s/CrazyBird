@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
@@ -10,13 +11,20 @@ public class Player : MonoBehaviour
 
     public Rigidbody2D _rigidbody2D;
     public Animator _ani;
+
     private bool death;
+
+    public delegate void DeathNotify();
+
+    public event DeathNotify OnDeath;
+    public UnityAction<int> OnScore;
     void Start()
     {
         jumpForce = 200f;
         death = false;
         InitPos = this.transform.position;
         Idle();
+
     }
 
     void Update()
@@ -46,7 +54,10 @@ public class Player : MonoBehaviour
     public void Die()
     {
         death = true;
-
+        if(OnDeath != null)
+        {
+            OnDeath();
+        }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -61,7 +72,10 @@ public class Player : MonoBehaviour
     {
 /*        if (collision.gameObject.CompareTag("Score"))
         {
-            //¼Ó·Ö
+            if (OnScore != null)
+            {
+                OnScore(1);
+            }
         }*/
     }
 }
