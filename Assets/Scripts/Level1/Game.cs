@@ -6,14 +6,17 @@ using UnityEngine.UI;
 
 public class Game : MonoBehaviour
 {
+    public PipelineManager pipelineManager;
+
     public GameObject BeginPanel;
     public GameObject GamePanel;
     public GameObject OverPanel;
+    public GameObject PausePanel;
 
     public Player player;
 
     private int score;
-    private Text curScore;
+    public Text curScore;
     public int Score {
         get { return score; }
         set
@@ -46,8 +49,11 @@ public class Game : MonoBehaviour
     void Start()
     {
         Status = E_Game_Status.Begin;
+
         player.OnDeath += GameOver;
         player.OnScore = OnPlayerScore;
+
+
     }
 
 
@@ -68,12 +74,17 @@ public class Game : MonoBehaviour
         Status = E_Game_Status.Game;
         score = 0;
         player.fly();
-        
+        pipelineManager.StartRun();
+    }
+
+    public void OnPauseGame()
+    {
+
     }
     private void GameOver()
     {
         Status = E_Game_Status.Over;
-
+        pipelineManager.StopRun();
     }
 
     private void OnPlayerScore(int score)

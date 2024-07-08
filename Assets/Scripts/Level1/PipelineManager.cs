@@ -4,15 +4,42 @@ using UnityEngine;
 
 public class PipelineManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public GameObject pipelineTemp;
+
+    public Transform pipelineBorn;
+
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         
+    }
+
+    Coroutine coroutine = null;
+    public void StartRun()
+    {
+        coroutine = StartCoroutine(GenaratePipelines());
+    }
+    public void StopRun()
+    {
+        StopCoroutine(coroutine);
+    }
+    IEnumerator GenaratePipelines()
+    {
+        while (true)
+        {
+            GenaratePipeline();
+
+            yield return new WaitForSeconds(2f);
+
+            
+        }
+    }
+    void GenaratePipeline()
+    {
+        Instantiate(pipelineTemp, pipelineBorn);
     }
 }
