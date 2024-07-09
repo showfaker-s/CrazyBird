@@ -2,7 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+
 
 public class Game : MonoBehaviour
 {
@@ -52,6 +54,8 @@ public class Game : MonoBehaviour
     }
     void Start()
     {
+        Screen.SetResolution(768, 1024, false);
+
         instance = this;
 
         BeginPanel.SetActive(true);
@@ -93,6 +97,13 @@ public class Game : MonoBehaviour
     }
     public void OnPauseGame()
     {
+
+    }
+
+    public void btnExit()
+    {
+
+        SceneManager.LoadScene("Game2");
 
     }
     private void Player_OnDeath()
