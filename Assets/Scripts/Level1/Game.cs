@@ -6,6 +6,10 @@ using UnityEngine.UI;
 
 public class Game : MonoBehaviour
 {
+    public static Game instance;
+
+    private bool gameStarted = false;
+
     public PipelineManager pipelineManager;
 
     public GameObject BeginPanel;
@@ -48,18 +52,23 @@ public class Game : MonoBehaviour
     }
     void Start()
     {
+        instance = this;
+
+        BeginPanel.SetActive(true);
         Status = E_Game_Status.Begin;
 
-        player.OnDeath += GameOver;
+
+        player._rigidbody2D.velocity = Vector2.zero;
+
+        player.OnDeath += Player_OnDeath;
         player.OnScore = OnPlayerScore;
 
 
     }
 
-
-    void Update()
+    public bool IsGameStarted()
     {
-        
+        return gameStarted;
     }
 
 
@@ -71,20 +80,30 @@ public class Game : MonoBehaviour
     }
     public void OnClickStartGame()
     {
+        gameStarted = true;
         Status = E_Game_Status.Game;
         score = 0;
         player.fly();
         pipelineManager.StartRun();
     }
+    public void ReStart()
+    {
+        Status = E_Game_Status.Begin;
 
+    }
     public void OnPauseGame()
     {
 
     }
-    private void GameOver()
+    private void Player_OnDeath()
     {
         Status = E_Game_Status.Over;
+        //停止管道生成
         pipelineManager.StopRun();
+
+        gameStarted = false;
+
+        totalScore.text = this.score.ToString();
     }
 
     private void OnPlayerScore(int score)

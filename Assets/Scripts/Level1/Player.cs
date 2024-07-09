@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
-    private float jumpForce;
+    public float jumpForce;
     private Vector3 InitPos;
 
     public Rigidbody2D _rigidbody2D;
@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
     public UnityAction<int> OnScore;
     void Start()
     {
-        jumpForce = 200f;
+
         death = false;
         InitPos = this.transform.position;
         Idle();
@@ -29,9 +29,13 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-
+        if (death || !Game.instance.IsGameStarted())
+        {
+            return;
+        }
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
         {
+            _rigidbody2D.velocity = Vector2.zero;
             fly();
         }
 
@@ -39,43 +43,47 @@ public class Player : MonoBehaviour
     public void Idle()
     {
         this._rigidbody2D.simulated = false;
-        _rigidbody2D.velocity = Vector2.zero;
         _ani.SetTrigger("Idle");
     }
     public void fly()
     {
         this._rigidbody2D.simulated = true;
         _ani.SetTrigger("InGame");
-        _rigidbody2D.velocity = Vector2.zero;
+        //_rigidbody2D.velocity = Vector2.zero;
         _rigidbody2D.AddForce(new Vector2(0, jumpForce), ForceMode2D.Force);
 
 
     }
     public void Die()
     {
+
+        _ani.SetTrigger("Die");
         death = true;
         if(OnDeath != null)
         {
             OnDeath();
         }
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+
+    public void Init()
+    {
+        this.transform.position = InitPos;
+        Idle();
+        death = false;
+    }
+    
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Pipeline"))
         {
-            death = true;
-            Destroy(this.gameObject);
+            Die();
         }
-    }
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-/*        if (collision.gameObject.CompareTag("Score"))
+        if (collision.gameObject.CompareTag("Score"))
         {
             if (OnScore != null)
             {
                 OnScore(1);
             }
-        }*/
+        }
     }
 }

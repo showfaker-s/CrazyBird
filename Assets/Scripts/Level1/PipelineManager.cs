@@ -6,16 +6,20 @@ public class PipelineManager : MonoBehaviour
 {
     public GameObject pipelineTemp;
 
-    public Transform pipelineBorn;
+    List<Pipeline> pipelines = new List<Pipeline>();
 
-    void Start()
-    {
-        
-    }
+    public float speed;
 
-    void Update()
+    public Transform born;
+
+    //销毁管道列表中的管道
+    public void Init()
     {
-        
+        for (int i = 0; i < pipelines.Count; i++)
+        {
+            Destroy(pipelines[i].gameObject);
+        }
+        pipelines.Clear();
     }
 
     Coroutine coroutine = null;
@@ -26,20 +30,43 @@ public class PipelineManager : MonoBehaviour
     public void StopRun()
     {
         StopCoroutine(coroutine);
+        for (int i = 0; i < pipelines.Count; i++)
+        {
+            //隐藏已经生成的
+            pipelines[i].enabled = false;
+
+        }
     }
     IEnumerator GenaratePipelines()
     {
         while (true)
         {
-            GenaratePipeline();
+            for (int i = 0; i < 3; i++)
+            {
+                if (pipelines.Count < 3)
+                {
+                    GenaratePipeline();
+                }
+                else
+                {
+                    //若有管道，则显示出来
+                    pipelines[i].enabled = true;
+                    //更改管道y值
+                    pipelines[i].Init();
+                }
+                yield return new WaitForSeconds(speed);
 
-            yield return new WaitForSeconds(2f);
-
-            
+            }
         }
     }
     void GenaratePipeline()
     {
-        Instantiate(pipelineTemp, pipelineBorn);
+        //小于3个才新生成
+        if(pipelines.Count < 3)
+        {
+            GameObject obj = Instantiate(pipelineTemp, born);
+            Pipeline p = obj.GetComponent<Pipeline>();
+            pipelines.Add(p);
+        }
     }
 }
