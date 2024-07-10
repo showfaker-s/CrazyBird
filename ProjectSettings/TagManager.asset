@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Pipeline
   - Score
+  - Player_Bullet
   layers:
   - Default
   - TransparentFX

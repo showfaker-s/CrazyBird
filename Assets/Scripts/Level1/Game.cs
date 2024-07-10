@@ -8,10 +8,7 @@ using UnityEngine.UI;
 
 public class Game : MonoBehaviour
 {
-    public static Game instance;
-
-    private bool gameStarted = false;
-
+    
     public PipelineManager pipelineManager;
 
     public GameObject BeginPanel;
@@ -35,7 +32,7 @@ public class Game : MonoBehaviour
     public Text totalScore;
     public Text bestScore;
     private E_Game_Status status;
-    /*    private E_Game_Status Status { get => status; set => status = value; }*/
+
     private E_Game_Status Status
     {
         get { return status; }
@@ -54,9 +51,7 @@ public class Game : MonoBehaviour
     }
     void Start()
     {
-        Screen.SetResolution(768, 1024, false);
-
-        instance = this;
+        Screen.SetResolution(540, 960, false);
 
         BeginPanel.SetActive(true);
         Status = E_Game_Status.Begin;
@@ -70,10 +65,10 @@ public class Game : MonoBehaviour
 
     }
 
-    public bool IsGameStarted()
+/*    public bool IsGameStarted()
     {
         return gameStarted;
-    }
+    }*/
 
 
     void UpdateUI()
@@ -84,15 +79,20 @@ public class Game : MonoBehaviour
     }
     public void OnClickStartGame()
     {
-        gameStarted = true;
+        player._rigidbody2D.bodyType = RigidbodyType2D.Dynamic;
+
         Status = E_Game_Status.Game;
         score = 0;
-        player.fly();
+        //player.fly();
         pipelineManager.StartRun();
     }
     public void ReStart()
     {
+        //player._rigidbody2D.bodyType = RigidbodyType2D.Static;
         Status = E_Game_Status.Begin;
+        pipelineManager.Init();
+        //pipelineManager.StartRun();
+        player.Init();
 
     }
     public void OnPauseGame()
@@ -112,7 +112,6 @@ public class Game : MonoBehaviour
         //停止管道生成
         pipelineManager.StopRun();
 
-        gameStarted = false;
 
         totalScore.text = this.score.ToString();
     }

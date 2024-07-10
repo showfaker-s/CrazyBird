@@ -20,7 +20,8 @@ public class Player : MonoBehaviour
     public UnityAction<int> OnScore;
     void Start()
     {
-
+        //开始之前不能
+        //this._rigidbody2D.bodyType = RigidbodyType2D.Static;
         death = false;
         InitPos = this.transform.position;
         Idle();
@@ -29,7 +30,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        if (death || !Game.instance.IsGameStarted())
+        if (death || this._rigidbody2D.bodyType == RigidbodyType2D.Static)//|| !Game.instance.IsGameStarted()
         {
             return;
         }
@@ -49,6 +50,7 @@ public class Player : MonoBehaviour
     {
         this._rigidbody2D.simulated = true;
         _ani.SetTrigger("InGame");
+
         //_rigidbody2D.velocity = Vector2.zero;
         _rigidbody2D.AddForce(new Vector2(0, jumpForce), ForceMode2D.Force);
 
@@ -67,6 +69,9 @@ public class Player : MonoBehaviour
 
     public void Init()
     {
+        _ani.ResetTrigger("Die");
+        _ani.ResetTrigger("InGame");
+        _ani.SetTrigger("Idle");
         this.transform.position = InitPos;
         Idle();
         death = false;
