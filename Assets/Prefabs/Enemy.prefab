@@ -181,7 +181,7 @@ Animator:
   m_GameObject: {fileID: 2776233217063331515}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: cb62b749c14f1a0449ac7b797d0d6a6a, type: 2}
+  m_Controller: {fileID: 9100000, guid: 77c147c842ccca748a44829f29a5890b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -345,9 +345,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.051929593, y: 0.49840885}
+  m_Offset: {x: -0.051929533, y: 0.012228221}
   serializedVersion: 2
-  m_Radius: 0.28814715
+  m_Radius: 0.29136685
 --- !u!114 &6208304219511541303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -363,5 +363,6 @@ MonoBehaviour:
   _ani: {fileID: 2776233217063331511}
   flySpeed: -5
   bullet: {fileID: 6795639032629524136, guid: 4110e88e019f16144ae120114e1b8a4f, type: 3}
-  bulletSpeed: 5
+  bulletSpeed: 3
   lifeTime: 5
+  death: 0

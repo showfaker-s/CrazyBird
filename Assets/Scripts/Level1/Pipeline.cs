@@ -8,7 +8,7 @@ public class Pipeline : MonoBehaviour
 
     public Vector2 range;
 
-    public int Count = 0;
+    //public int Count = 0;
     //¼ÆÊ±Æ÷
     float t = 0;
     void Start()
