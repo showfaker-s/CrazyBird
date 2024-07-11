@@ -342,7 +342,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.051929533, y: 0.012228221}
@@ -361,10 +361,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _ani: {fileID: 2776233217063331511}
-  flySpeed: 5
   bullet: {fileID: 6795639032629524136, guid: 4fe1cbf861967dd42ac0217e003bff42, type: 3}
-  bulletSpeed: 1
-  lifeTime: 5
+  flySpeed: 5
+  fireSpeed: 2
+  HP: 0
   death: 0
+  lifeTime: 5
   enemyType: 1
   range: {x: -4, y: 4}

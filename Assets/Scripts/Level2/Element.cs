@@ -10,7 +10,10 @@ public class Element : MonoBehaviour
     public float power;
 
     public E_Enemy_TYPE enemyType;
-    //public int Dir = 1;
+    
+    public int direction = 1;
+
+
     void Start()
     {
         

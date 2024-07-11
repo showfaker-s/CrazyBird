@@ -67,7 +67,7 @@ public class UnitManager : MonoBehaviour
             }
             t1++;
             t2++;
-            //t3++;
+            t3++;
 
 
 

@@ -7,19 +7,19 @@ using static Const;
 
 public class Enemy : Unit
 {
-    public Animator _ani;
+    //public Animator _ani;
 
     //private Vector2 curPos;
 
-    public float flySpeed;
+    //public float flySpeed;
 
-    public GameObject bullet;
+    //public GameObject bullet;
     //每秒发射多少颗
-    public float fireSpeed;
+    //public float fireSpeed;
 
     public float lifeTime;
 
-    public bool death = false;
+    //public bool death = false;
 
     public E_Enemy_TYPE enemyType;
 
@@ -40,10 +40,10 @@ public class Enemy : Unit
         transform.localPosition += new Vector3(0, Inity, 0);
     }
 
-    void Update()
+     void Update()
     {
         fly();
-        fire();
+        Fire();
     }
 
 
@@ -60,29 +60,27 @@ public class Enemy : Unit
         this.transform.position = new Vector3(this.transform.position.x - Time.deltaTime * flySpeed, Inity + y);
 
     }
-    private float t = 0;
-    private void fire()
+    //private float t = 0;
+/*    private void fire()
     {
-        t += Time.deltaTime;
-        if (t > 1 / fireSpeed && !death)
+        //t += Time.deltaTime;
+        if (t > 1 / fireSpeed)
         {
             //会变成player的子物体，跟着子物体走
             //Instantiate(bullet, this.transform);
             //GameObject go = Instantiate(bullet);
             GameObject go = Instantiate(bullet, transform.position, Quaternion.identity, this.transform);
             go.transform.position = transform.position;
-            //go.GetComponent<Element>().Dir = 1;
+            go.GetComponent<Element>().Dir = 1;
             //改颜色
-/*            SpriteRenderer[] SRs = go.GetComponentsInChildren<SpriteRenderer>();
+            SpriteRenderer[] SRs = go.GetComponentsInChildren<SpriteRenderer>();
             foreach(SpriteRenderer sr in SRs)
             {
                 sr.color = Color.red;
-            }*/
-
+            }
             t = 0;
-
         }
-    }
+    }*/
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -91,12 +89,10 @@ public class Enemy : Unit
         }
     }
 
-    private void Die()
+/*    private void Die()
     {
         death = true;
-        
         _ani.SetTrigger("Die");
         Destroy(this.gameObject,0.2f);
-
-    }
+    }*/
 }

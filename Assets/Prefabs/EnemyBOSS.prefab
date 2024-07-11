@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 739233937742a7b47a2a9141d939d870, type: 3}
-  m_Color: {r: 0.86415094, g: 0.30489853, b: 0.30489853, a: 1}
+  m_Color: {r: 0.7509433, g: 0.7509433, b: 0.7509433, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -161,7 +161,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: d0a711acf1300814680c2b705b5bad18, type: 3}
-  m_Color: {r: 0.93207544, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.7433963, g: 0.7433963, b: 0.7433963, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -266,7 +266,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 2750f10f239c2ed4eb1d5bcbc13443b8, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.7283019, g: 0.72417945, b: 0.72417945, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -361,10 +361,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _ani: {fileID: 2776233217063331511}
+  bullet: {fileID: 6795639032629524136, guid: 4110e88e019f16144ae120114e1b8a4f, type: 3}
+  flyspeed: 0
+  fireSpeed: 0
+  HP: 0
   flySpeed: 5
   bullet: {fileID: 6795639032629524136, guid: 4110e88e019f16144ae120114e1b8a4f, type: 3}
-  bulletSpeed: 1
   lifeTime: 5
-  death: 0
   enemyType: 0
   range: {x: -4, y: 4}
