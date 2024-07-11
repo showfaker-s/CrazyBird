@@ -5,14 +5,17 @@ using UnityEngine;
 
 public class UnitManager : MonoBehaviour
 {
-    public GameObject EnemyTemplate;
+    public GameObject Enemy1Template;
+    public GameObject Enemy2Template;
+    public GameObject Enemy3Template;
 
     List<Enemy> Enemies = new List<Enemy>();
 
-    public float bornSpeed;
+    public float bornSpeed1;
+    public float bornSpeed2;
+    public float bornSpeed3;
 
-    //生成enemy的位置
-    public Vector2 range;
+
 
 
     //销毁管道列表中的管道
@@ -40,25 +43,46 @@ public class UnitManager : MonoBehaviour
 
         }
     }
+    private float t1 = 0;
+    private float t2 = 0;
+    private float t3 = 0;
     IEnumerator GenarateEnemys()
     {
         while (true)
         {
-            GenarateEnemy();
+            if(t1 > bornSpeed1)
+            {
+                GenarateEnemy(Enemy1Template);
+                t1 = 0;
+            }
+            if (t2 > bornSpeed2)
+            {
+                GenarateEnemy(Enemy2Template);
+                t2 = 0;
+            }
+            if (t3 > bornSpeed3)
+            {
+                GenarateEnemy(Enemy3Template);
+                t3 = 0;
+            }
+            t1++;
+            t2++;
+            //t3++;
 
 
 
-            yield return new WaitForSeconds(bornSpeed);
+            yield return new WaitForSeconds(1);
 
         }
     }
 
-    void GenarateEnemy()
+    void GenarateEnemy(GameObject template)
     {
-        float y = UnityEngine.Random.Range(range.x, range.y);
-        GameObject obj = Instantiate(EnemyTemplate, transform);
-        //改y
-        obj.transform.localPosition = new Vector3(0, y, 0);
+        //随时判断空保证安全
+        if (template == null) return;
+
+        GameObject obj = Instantiate(template,this.transform);
+
         Enemy p = obj.GetComponent<Enemy>();
         Enemies.Add(p);
     }

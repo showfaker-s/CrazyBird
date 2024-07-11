@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Const;
 
 public class Element : MonoBehaviour
 {
     public float speed;
 
+    public float power;
+
+    public E_Enemy_TYPE enemyType;
     //public int Dir = 1;
     void Start()
     {

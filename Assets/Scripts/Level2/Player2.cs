@@ -3,13 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player2 : MonoBehaviour
+public class Player2 : Unit
 {
     public Animator _ani;
 
     private Vector2 curPos;
 
-    public float speed;
+    public float flyspeed;
 
     public GameObject bullet;
     //每秒发射多少颗
@@ -22,6 +22,10 @@ public class Player2 : MonoBehaviour
     public delegate void DeathNotify();
 
     public event DeathNotify Ondeath;
+    //没完善
+    public delegate void AtkedNotify();
+
+    public event DeathNotify Atked;
     void Start()
     {
         death = false;
@@ -34,8 +38,8 @@ public class Player2 : MonoBehaviour
             Die();
             return;
         }
-        curPos.x += Input.GetAxis("Horizontal") * Time.deltaTime * speed;
-        curPos.y += Input.GetAxis("Vertical") * Time.deltaTime * speed;
+        curPos.x += Input.GetAxis("Horizontal") * Time.deltaTime * flyspeed;
+        curPos.y += Input.GetAxis("Vertical") * Time.deltaTime * flyspeed;
         if (Input.GetButton("Fire1"))
         {
             Fire();
@@ -58,14 +62,22 @@ public class Player2 : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Element bullet = collision.GetComponent<Element>();
         if (collision.gameObject.CompareTag("Enemy_Bullet"))
         {
-            HP--;
-            if(HP == 0)
+            HP = HP - bullet.power;
+            //不能等于0
+            if(HP <= 0)
             {
                 death = true;
             }
         }
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            death = true;
+            HP = 0;
+        }
+
 
     }
 

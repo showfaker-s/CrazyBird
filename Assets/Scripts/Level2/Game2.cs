@@ -12,6 +12,8 @@ public class Game2 : MonoBehaviour
     public Player2 player2;
 
     public Slider sliderHP;
+
+    
     /*    public GameObject BeginPanel;
         public GameObject GamePanel;
         public GameObject OverPanel;
@@ -56,6 +58,13 @@ public class Game2 : MonoBehaviour
         Screen.SetResolution(1280, 720, true);
         unitManager.StartRun();
         pipelineManager.StartRun();
+
+        sliderHP.maxValue = player2.HP;
+    }
+    private void Update()
+    {
+        //playerÅ×³öÊÂ¼þ£¬Game¼àÌý
+        sliderHP.value = Mathf.Lerp(sliderHP.value, player2.HP,0.1f);
     }
     private void Player_OnDeath()
     {
