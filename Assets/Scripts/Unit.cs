@@ -19,6 +19,8 @@ public class Unit : MonoBehaviour
     //fire¼ÆÊ±Æ÷
     protected float t = 0;
 
+    public E_Element_SIDE side;
+
 
     void Start()
     {
@@ -52,7 +54,9 @@ public class Unit : MonoBehaviour
             GameObject go = Instantiate(bullet);
             go.transform.position = transform.position;
             t = 0;
-            //go.GetComponent<Element>().direction = 
+            //go.GetComponent<Element>().direction = go.GetComponent<Element>().side == E_Element_SIDE.PLAYER ? Vector3.right : Vector3.left;
+            go.GetComponent<Element>().direction = this.side == E_Element_SIDE.PLAYER ? Vector3.right : Vector3.left;
+
         }
     }
 

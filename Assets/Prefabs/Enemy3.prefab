@@ -366,6 +366,7 @@ MonoBehaviour:
   fireSpeed: 0
   HP: 0
   death: 0
+  side: 2
   lifeTime: 5
   enemyType: 2
-  range: {x: -4, y: 4}
+  range: {x: -3, y: 5}

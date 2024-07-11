@@ -5,19 +5,20 @@ using UnityEngine;
 
 public class Player2 : Unit
 {
+
     //public Animator _ani;
-
-    private Vector2 curPos;
-
     //public float flyspeed;
 
-   // public GameObject bullet;
+    // public GameObject bullet;
     //每秒发射多少颗
     //public float fireSpeed;
 
     //public float HP;
 
     //private bool death;
+
+    private Vector2 curPos;
+
 
     public delegate void DeathNotify();
 
@@ -33,11 +34,7 @@ public class Player2 : Unit
 
     void Update()
     {
-/*        if (death)
-        {
-            Die();
-            return;
-        }*/
+
         curPos.x += Input.GetAxis("Horizontal") * Time.deltaTime * flySpeed;
         curPos.y += Input.GetAxis("Vertical") * Time.deltaTime * flySpeed;
         if (Input.GetButton("Fire1"))
@@ -46,8 +43,8 @@ public class Player2 : Unit
         }
         this.transform.position = curPos;
     }
-    //private float t = 0;
-/*    private void Fire()
+/*    private float t = 0;
+    private void Fire()
     {
         //t += Time.deltaTime;
         if(t > 1 / fireSpeed)
