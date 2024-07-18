@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3645245941884396316
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8046727657172536700}
+  m_Layer: 0
+  m_Name: firePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8046727657172536700
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3645245941884396316}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.41, y: -0.08, z: 0}
+  m_LocalScale: {x: -1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6208304217932703575}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6208304217932703578
 GameObject:
   m_ObjectHideFlags: 0
@@ -32,6 +63,7 @@ Transform:
   m_Children:
   - {fileID: 6208304218483871259}
   - {fileID: 6208304217989650563}
+  - {fileID: 8046727657172536700}
   m_Father: {fileID: 6208304217710623373}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -345,9 +377,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.051929593, y: 0.49840885}
+  m_Offset: {x: -0.02283734, y: -0.0028316975}
   serializedVersion: 2
-  m_Radius: 0.28814715
+  m_Radius: 0.3664037
 --- !u!114 &6208304217710623372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -360,6 +392,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fd584917918f1c4ba7865452e7ee930, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  _rigidbodyBird: {fileID: 6208304217710623374}
+  _ani: {fileID: 6208304217932703574}
   bullet: {fileID: 6795639032629524136, guid: 251f7d593f9d9ff48828831dad277296, type: 3}
-  fireSpeed: 5
+  firePoint: {fileID: 8046727657172536700}
+  flySpeed: 10
+  fireSpeed: 10
+  hp: 100
+  speed: 10
+  fireRate: 10
+  death: 0
+  side: 1
+  MaxHP: 1000

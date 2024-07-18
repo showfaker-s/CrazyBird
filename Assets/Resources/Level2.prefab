@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &975386676797352182
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5175686246230258791}
+  - component: {fileID: 4882679952799195796}
+  m_Layer: 0
+  m_Name: Level2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5175686246230258791
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 975386676797352182}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4882679952799195796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 975386676797352182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2ebce36698c9354f8fb8e3f2fddf315, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitManager: {fileID: 6677056293303329832, guid: 984b291a912330446a497e1a9692e08f, type: 3}
+  LevelID: 2
+  Name: second
+  Boss: {fileID: 526373380, guid: 5506f5ab2261af84982b07d27697a886, type: 3}
+  Rules:
+  - {fileID: 3226672536233506731, guid: 20228f4e2b160384f864e1e144d3ebd4, type: 3}
+  - {fileID: 7083886375099841539, guid: 1103141eb15fcba4a9da041f38c43095, type: 3}
+  - {fileID: 954293099767579146, guid: d4d8471f35d9918429fec87820e23494, type: 3}
+  bossTime: 60
+  result: 0

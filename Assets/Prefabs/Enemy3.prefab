@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1775801388
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1775801389}
+  m_Layer: 0
+  m_Name: firePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1775801389
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1775801388}
+  m_LocalRotation: {x: -0, y: -0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.404, y: -0.05, z: 0}
+  m_LocalScale: {x: 0.6666667, y: 1.25, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2776233217063331510}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2776233216600054117
 GameObject:
   m_ObjectHideFlags: 0
@@ -116,6 +147,7 @@ Transform:
   m_Children:
   - {fileID: 2776233217178030074}
   - {fileID: 2776233216600054114}
+  - {fileID: 1775801389}
   m_Father: {fileID: 2776233216882801516}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -360,13 +392,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3d8c858f04adf244ae418dd4d6efab4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _rigidbodyBird: {fileID: 2776233216882801519}
   _ani: {fileID: 2776233217063331511}
-  bullet: {fileID: 6795639032629524136, guid: 4fe1cbf861967dd42ac0217e003bff42, type: 3}
+  bullet: {fileID: 2776233217369190582}
+  firePoint: {fileID: 1775801389}
   flySpeed: 15
   fireSpeed: 0
-  HP: 0
+  hp: 100
+  speed: 100
+  fireRate: 10
   death: 0
   side: 2
+  MaxHP: 1000
   lifeTime: 5
   enemyType: 2
   range: {x: -3, y: 5}
