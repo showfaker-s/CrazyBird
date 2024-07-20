@@ -101,7 +101,7 @@ MonoBehaviour:
   speed: 12
   power: 1
   direction: {x: 0, y: 0, z: 0}
-  side: 0
+  side: 2
   lifeTime: 10
 --- !u!61 &8392448829731600415
 BoxCollider2D:

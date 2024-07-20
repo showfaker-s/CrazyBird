@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         //开始之前不能
-        //this._rigidbody2D.bodyType = RigidbodyType2D.Static;
+        this._rigidbody2D.bodyType = RigidbodyType2D.Static;
         death = false;
         InitPos = this.transform.position;
         Idle();
@@ -33,7 +33,6 @@ public class Player : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
         {
-            _rigidbody2D.velocity = Vector2.zero;
             fly();
         }
 
@@ -49,7 +48,7 @@ public class Player : MonoBehaviour
         this._rigidbody2D.simulated = true;
         _ani.SetTrigger("InGame");
 
-        //_rigidbody2D.velocity = Vector2.zero;
+        _rigidbody2D.velocity = Vector2.zero;
         _rigidbody2D.AddForce(new Vector2(0, jumpForce), ForceMode2D.Force);
 
 

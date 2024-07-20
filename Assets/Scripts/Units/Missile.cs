@@ -37,6 +37,7 @@ public class Missile : Element
     }
     public void Launch()
     {
+        side = E_Element_SIDE.ENEMY;
         running = true;
     }
 

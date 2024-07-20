@@ -38,12 +38,14 @@ public class Level : MonoBehaviour
     Coroutine coroutine = null;
     private void Start()
     {
+        //游戏启动时间
+        this.levelStartTime = Time.realtimeSinceStartup;
         StartRun();
     }
     public void StartRun()
     {
-
-        if(coroutine == null) 
+        //timeSinceLevelStart = Time.realtimeSinceStartup - this.levelStartTime;
+        if (coroutine == null) 
         coroutine = StartCoroutine(RunLevel()); 
     }
     public void StopRun()
@@ -52,9 +54,11 @@ public class Level : MonoBehaviour
     }
     IEnumerator RunLevel()
     {
-        //UIManager.Instance.ShowLevelStart(string.Format("LEVEL {0} {1}", this.LevelID, this.Name));
+        UIManager.Instance.ShowLevelStart(string.Format("LEVEL {0} {1}", this.LevelID, this.Name));
+        //执行过程动画
         yield return new WaitForSeconds(2f);
-
+        UIManager.Instance.uiLevelStart.SetActive(false);
+        
         for (int i = 0; i < Rules.Count; i++)
         {
             SpawnRule rule = Instantiate<SpawnRule>(Rules[i]);
@@ -65,7 +69,6 @@ public class Level : MonoBehaviour
     void Update()
     {
         timeSinceLevelStart = Time.realtimeSinceStartup - this.levelStartTime;
-
         if (this.result != LEVEL_RESULT.NONE)
         {
             if (boss != null) Destroy(boss,0.2f);
@@ -91,5 +94,6 @@ public class Level : MonoBehaviour
         this.result = LEVEL_RESULT.SUCCESS;
         if (this.OnLevelEnd != null)
         this.OnLevelEnd(this.result);
+        Game2.Instance.OnPlayerScore(100);
     }
 }

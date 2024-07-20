@@ -20,13 +20,11 @@ public class BOSS : Enemy
     float fireTimer3 = 0;
 
     Missile missile = null;
-    private void Start()
-    {
-        OnStart();
-    }
+
     public override void OnStart()
     {
         this.Fly();
+        this._rigidbodyBird.simulated = true;
         StartCoroutine(Enter());
     }
     public override void OnUpdate()
@@ -41,7 +39,6 @@ public class BOSS : Enemy
     }
     IEnumerator Enter()
     {
-        Debug.Log("BOSS");
         this.transform.position = new Vector3(15, 0, 0);
         yield return MoveTo(new Vector3(5, 0, 0));
         yield return Attack();
@@ -114,14 +111,13 @@ public class BOSS : Enemy
         // missile.transform.SetParent(null);
         missile.Launch();
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+/*    private void OnTriggerEnter2D(Collider2D collision)
     {
         
         if (collision.gameObject.CompareTag("Player_Bullet"))
         {
-            Element bullet = new Element();
-            this.Damage(bullet.power);
+            this.Damage(attack);
         }
 
-    }
+    }*/
 }

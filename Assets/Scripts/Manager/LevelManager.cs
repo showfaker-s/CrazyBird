@@ -11,5 +11,6 @@ public class LevelManager : MonoSingleton<LevelManager>
     public void LoadLevel(int levelID)
     {
         this.level = Instantiate<Level>(levels[levelID - 1]);
+
     }
 }

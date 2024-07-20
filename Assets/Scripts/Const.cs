@@ -1,3 +1,10 @@
+public enum E_Game_Status
+{
+    Begin,
+    Game,
+    Over
+}
+
 public enum E_Enemy_TYPE
 {
     NORMAL,

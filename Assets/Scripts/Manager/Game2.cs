@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class Game2 : MonoSingleton<Game2>
 {
@@ -12,84 +11,56 @@ public class Game2 : MonoSingleton<Game2>
 
     public Player2 player2;
 
-    public Slider sliderhp;
-    public Text uiLevelName;
-
-    public GameObject BeginPanel;
-    public GameObject GamePanel;
-    public GameObject OverPanel;
-    public GameObject PausePanel;
 
     private int score;
-    public Text curScore;
+    private int totalScore;
+    private int bestScore;
+    
+    
     public int Score
     {
         get { return score; }
         set
         {
             score = value;
-            curScore.text = this.score.ToString();
+            UIManager.Instance.UpdateScore(score);
         }
     }
 
-    public Text totalScore;
-    public Text bestScore;
     private E_Game_Status status;
-
-    private E_Game_Status Status
+    public E_Game_Status Status
     {
         get { return status; }
         set
         {
             this.status = value;
             //status改变就更新UI
-            this.UpdateUI();
+            UIManager.Instance.UpdateUI();
+            DataManager();
         }
     }
-    enum E_Game_Status
-    {
-        Begin,
-        Game,
-        Over
-    }
+
     void Start()
     {
+        this.Status = E_Game_Status.Begin;
 
-        player2.OnDeath += Player_OnDeath;
-        Screen.SetResolution(1280, 720, true);
-        Status = E_Game_Status.Begin;
-        pipelineManager.StartRun();
+        this.player2.OnDeath += Player_OnDeath;
 
-        sliderhp.maxValue = player2.hp;
-
-        //Level level1 = Resources.Load<Level>("Level1");
     }
-    private void Update()
-    {
-        
-        //player抛出事件，Game监听
-        sliderhp.value = Mathf.Lerp(sliderhp.value, player2.hp, 0.1f);
-        UpdateUI();
-    }
-    public void Player_OnDeath()
+    public void Player_OnDeath(Unit target)
     {
         Status = E_Game_Status.Over;
         //停止管道生成
-        pipelineManager.StartRun();
-        UnitManager.Instance.Stop();
+        pipelineManager.StopRun();
+        UnitManager.Instance.Clear();
         LevelManager.Instance.level.StopRun();
         LevelManager.Instance.level.result = Level.LEVEL_RESULT.FAILD;
 
     }
-    void UpdateUI()
-    {
-        BeginPanel.SetActive(Status == E_Game_Status.Begin);
-        GamePanel.SetActive(Status == E_Game_Status.Game);
-        OverPanel.SetActive(Status == E_Game_Status.Over);
-    }
     public void OnClickStartGame()
     {
-
+        
+        pipelineManager.StartRun();
         LoadLevel();
         player2._rigidbodyBird.bodyType = RigidbodyType2D.Kinematic;
         Status = E_Game_Status.Game;
@@ -101,18 +72,15 @@ public class Game2 : MonoSingleton<Game2>
     private void LoadLevel()
     {
         LevelManager.Instance.LoadLevel(this.curLevelId);
-        uiLevelName.text = string.Format("LEVEL {0} {1}", LevelManager.Instance.level.LevelID, LevelManager.Instance.level.Name);
-        
-
     }
 
     public void ReStart()
     {
-        player2._rigidbodyBird.bodyType = RigidbodyType2D.Static;
-        Status = E_Game_Status.Begin;
-        pipelineManager.StartRun();
-        player2.Init();
-
+        /*        player2._rigidbodyBird.bodyType = RigidbodyType2D.Static;
+                Status = E_Game_Status.Begin;
+                pipelineManager.StartRun();
+                player2.Init();*/
+        SceneManager.LoadScene("Game2");
     }
     public void OnPauseGame()
     {
@@ -121,13 +89,13 @@ public class Game2 : MonoSingleton<Game2>
 
     public void btnExit()
     {
-        SceneManager.LoadScene("Game2");
-
+        Application.Quit();
     }
 
-    private void OnPlayerScore(int score)
+    public void OnPlayerScore(int score)
     {
         Score += score;
+
     }
 
     void OnLevelEnd(Level.LEVEL_RESULT result)
@@ -145,5 +113,16 @@ public class Game2 : MonoSingleton<Game2>
 
         }
         //pipelineManager.StartRun();
+    }
+    
+    public void DataManager()
+    {
+        PlayerPrefs.SetInt("totalScore", Score);
+        if (Score > bestScore)
+        {
+            bestScore = Score;
+            PlayerPrefs.SetInt("bestScore", bestScore); // 保存最高分
+        }
+        PlayerPrefs.Save();
     }
 }

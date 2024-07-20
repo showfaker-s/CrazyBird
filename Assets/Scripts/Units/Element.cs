@@ -35,4 +35,5 @@ public class Element : MonoBehaviour
             Destroy(this.gameObject, 2f);
         }
     }
+
 }

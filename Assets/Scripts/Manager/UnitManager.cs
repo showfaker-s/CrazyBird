@@ -18,7 +18,7 @@ public class UnitManager : MonoSingleton<UnitManager>
         //进行后续处理
         return p;
     }
-    public void Stop()
+    public void Clear()
     {
         this.enemies.Clear();
     }

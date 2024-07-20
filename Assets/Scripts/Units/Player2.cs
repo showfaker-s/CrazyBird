@@ -2,30 +2,12 @@ using UnityEngine;
 
 public class Player2 : Unit
 {
-
-    //public Animator _ani;
-    //public float flyspeed;
-
-    // public GameObject bullet;
-    //每秒发射多少颗
-    //public float fireSpeed;
-
-    //public float hp;
-
-    //private bool death;
-
     private Vector2 curPos;
     private Vector3 initPos;
-
-
-    public delegate void DeathNotify();
-
-    public event DeathNotify OnDeath;
 
     //没完善
     public delegate void AtkedNotify();
 
-    public event DeathNotify Atked;
     public override void OnStart()
     {
         initPos = this.transform.position;
@@ -54,27 +36,23 @@ public class Player2 : Unit
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy_Bullet"))
+        if (this.death)
+            return;
+        Element bullet = collision.GetComponent<Element>();
+        Enemy enemy = collision.GetComponent<Enemy>();
+        Item item = collision.gameObject.GetComponent<Item>();
+        if (item != null)
         {
-            Element bullet = collision.GetComponent<Element>();
-            hp = hp - bullet.power;
-            //不能等于0
-            if (hp <= 0)
-            {
-                Die();
-                if (OnDeath != null)
-                {
-                    OnDeath();
-                }
-            }
+            item.Use(this);
         }
-        if (collision.gameObject.CompareTag("Enemy"))
+        if ((bullet == null && enemy == null)) return;
+        if (enemy != null)
         {
-            Die();
-            if (OnDeath != null)
-            {
-                OnDeath();
-            }
+            this.Die();
+        }
+        if (bullet != null && bullet.side == E_Element_SIDE.ENEMY)
+        {
+            this.Damage(bullet.power);
         }
     }
 

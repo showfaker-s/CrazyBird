@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &975386676797352182
+--- !u!1 &3151289997502347721
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5175686246230258791}
-  - component: {fileID: 4882679952799195796}
+  - component: {fileID: 3151289997502347723}
+  - component: {fileID: 3151289997502347722}
   m_Layer: 0
-  m_Name: Level2
+  m_Name: Game
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5175686246230258791
+--- !u!4 &3151289997502347723
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 975386676797352182}
+  m_GameObject: {fileID: 3151289997502347721}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -32,24 +32,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4882679952799195796
+--- !u!114 &3151289997502347722
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 975386676797352182}
+  m_GameObject: {fileID: 3151289997502347721}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2ebce36698c9354f8fb8e3f2fddf315, type: 3}
+  m_Script: {fileID: 11500000, guid: f6882a4741e29724fb02a238043eaa6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LevelID: 2
-  Name: second
-  Boss: {fileID: 526373380, guid: 5506f5ab2261af84982b07d27697a886, type: 3}
-  Rules:
-  - {fileID: 3226672536233506731, guid: 20228f4e2b160384f864e1e144d3ebd4, type: 3}
-  - {fileID: 7083886375099841539, guid: 1103141eb15fcba4a9da041f38c43095, type: 3}
-  - {fileID: 954293099767579146, guid: d4d8471f35d9918429fec87820e23494, type: 3}
-  bossTime: 20
-  result: 0
+  pipelineManager: {fileID: 5305936432888148123, guid: 80b550d05e8df894495a69fc9b7c6321, type: 3}
+  curLevelId: 1
+  player2: {fileID: 6208304217710623372, guid: 1ed9eca705a1cc64387a9589f2526386, type: 3}

@@ -77,7 +77,7 @@ public class Game : MonoBehaviour
     }
     public void OnClickStartGame()
     {
-        player._rigidbody2D.bodyType = RigidbodyType2D.Kinematic;
+        player._rigidbody2D.bodyType = RigidbodyType2D.Dynamic;
 
         Status = E_Game_Status.Game;
         score = 0;
@@ -97,11 +97,14 @@ public class Game : MonoBehaviour
     {
 
     }
+    public void uiNextBtn()
+    {
+        SceneManager.LoadScene("Game2");
 
+    }
     public void btnExit()
     {
-
-        SceneManager.LoadScene("Game2");
+        Application.Quit();
 
     }
     private void Player_OnDeath()

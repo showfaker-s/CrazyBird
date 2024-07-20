@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class Unit : MonoBehaviour
 {
-    private static Unit instance;
-
     public Rigidbody2D _rigidbodyBird;
 
     public Animator _ani;
@@ -15,6 +13,7 @@ public class Unit : MonoBehaviour
     //每秒发射多少颗
     public float fireSpeed;
 
+    public float MaxHP = 100f;
     public float hp = 100f;
 
     public float attack;
@@ -34,13 +33,12 @@ public class Unit : MonoBehaviour
     public delegate void DeathModify(Unit sender);
     public event DeathModify OnDeath;
 
-    public float MaxHP = 100f;
 
     void Start()
     {
-        OnStart();
-        instance = this;
         this.Idle();
+        this.hp = MaxHP;
+        OnStart();
     }
     public virtual void OnStart()
     {
@@ -119,11 +117,13 @@ public class Unit : MonoBehaviour
             this.hp = 0;
 
         }
+        if (this.OnDeath != null)
+        {
+            this.OnDeath(this);
+        }
         this.death = true;
         this._ani.SetTrigger("Die");
         this._rigidbodyBird.bodyType = RigidbodyType2D.Dynamic;
-        //if (desoryOnDeath)
-
     }
 
 }

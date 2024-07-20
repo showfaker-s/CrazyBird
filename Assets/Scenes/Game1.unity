@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 129272046}
   - component: {fileID: 129272045}
   m_Layer: 5
-  m_Name: choosBtn
+  m_Name: nextBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -206,7 +206,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 129272046}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1403810166}
+        m_TargetAssemblyTypeName: Game, Assembly-CSharp
+        m_MethodName: uiNextBtn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &129272046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2624,7 +2636,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pipelineTemp: {fileID: 5223027361226237952, guid: d161bd7a3e57ac64dbb7daa45499fe18, type: 3}
-  speed: 2
+  speed: 1.5
   born: {fileID: 2000497982}
 --- !u!4 &2000497982
 Transform:
@@ -2712,7 +2724,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Select
+  m_Text: Next
 --- !u!222 &2040363662
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2818,23 +2830,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1659079872328902217, guid: ed31c637efdff70439586be98b91406e, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9659258
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1659079872328902217, guid: ed31c637efdff70439586be98b91406e, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.09098015
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1659079872328902217, guid: ed31c637efdff70439586be98b91406e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1659079872328902217, guid: ed31c637efdff70439586be98b91406e, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.2588191
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1659079872328902217, guid: ed31c637efdff70439586be98b91406e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -10.44
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1659079872328902217, guid: ed31c637efdff70439586be98b91406e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1659079872328902217, guid: ed31c637efdff70439586be98b91406e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 30
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1659079873170445017, guid: ed31c637efdff70439586be98b91406e, type: 3}
       propertyPath: jumpForce
