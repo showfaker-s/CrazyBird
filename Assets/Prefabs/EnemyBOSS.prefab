@@ -629,7 +629,7 @@ MonoBehaviour:
   firePoint: {fileID: 4165252303884804}
   flySpeed: 0
   fireSpeed: 2
-  MaxHP: 1000
+  MaxHP: 100
   hp: 100
   attack: 1
   speed: 1

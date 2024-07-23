@@ -84,7 +84,13 @@ public class Game2 : MonoSingleton<Game2>
     }
     public void OnPauseGame()
     {
-
+        UIManager.Instance.PausePanel.SetActive(true);
+        Time.timeScale = 0;
+    }
+    public void ContinueGame()
+    {
+        UIManager.Instance.PausePanel.SetActive(false);
+        Time.timeScale = 1;
     }
 
     public void btnExit()

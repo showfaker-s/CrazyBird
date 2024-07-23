@@ -2636,7 +2636,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pipelineTemp: {fileID: 5223027361226237952, guid: d161bd7a3e57ac64dbb7daa45499fe18, type: 3}
-  speed: 1.5
+  speed: 2
   born: {fileID: 2000497982}
 --- !u!4 &2000497982
 Transform:

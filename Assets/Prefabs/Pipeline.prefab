@@ -327,6 +327,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0bbf2071855da0479d9a02e75c2f9b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: {x: -8, y: 0, z: 0}
+  speed: {x: -6, y: 0, z: 0}
   range: {x: -2, y: 2}
-  Count: 0

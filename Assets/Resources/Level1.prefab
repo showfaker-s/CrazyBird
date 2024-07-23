@@ -51,5 +51,5 @@ MonoBehaviour:
   - {fileID: 3226672536233506731, guid: 20228f4e2b160384f864e1e144d3ebd4, type: 3}
   - {fileID: 7083886375099841539, guid: 1103141eb15fcba4a9da041f38c43095, type: 3}
   - {fileID: 954293099767579146, guid: d4d8471f35d9918429fec87820e23494, type: 3}
-  bossTime: 10
+  bossTime: 30
   result: 0
